@@ -1,4 +1,4 @@
-package is.hi.hbv601g.parkpirates;
+package hi.parkpirates.android;
 
 
 import android.app.Activity;
