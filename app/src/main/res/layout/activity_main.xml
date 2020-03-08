@@ -7,12 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity"
         android:background="@drawable/dimonds_portrait">
-    <is.hi.hbv601g.parkpirates.GameView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/rolled_map1"
-            />
-    <Button
+      <Button
             android:layout_width="@android:dimen/notification_large_icon_width"
             android:layout_height="@android:dimen/notification_large_icon_height"
             android:id="@+id/button"
