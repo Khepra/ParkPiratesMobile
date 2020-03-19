@@ -28,7 +28,13 @@
         </activity>
         <activity android:name=".controller.RegisterActivity">
         </activity>
-        <activity android:name=".controller.LoginActivity">
+        <activity android:name=".controller.LoginActivity"
+            android:label="PpDebug">
+            <intent-filter>
+                <action android:name=".controller.LoginActivity"/>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".StartGame">
         </activity>

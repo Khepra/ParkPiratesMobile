@@ -1,5 +1,8 @@
 package hi.parkpirates.android.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -17,7 +20,7 @@ import java.util.GregorianCalendar;
 	 are made by users of the Cached<?> class.
 	See MobileGame{..} class for caching and refresh policy.
  */
-public class Cached<T> {
+public class Cached<T extends Parcelable> implements Parcelable {
 	private T 				obj;
 	private Date			origin;
 	private boolean			force;
@@ -58,4 +61,46 @@ public class Cached<T> {
 	public void invalidate() {
 		force = true;
 	}
+
+
+	// **** Parcelable ****
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(obj.getClass().getName());
+		dest.writeParcelable(obj, 0);
+		dest.writeLong(origin.getTime());
+		dest.writeInt(force ? 1 : 0);
+	}
+
+	private Cached(Parcel src) {
+		final String type = src.readString();
+		try {
+			this.obj = src.readParcelable(Class.forName(type).getClassLoader());
+		} catch (ClassNotFoundException e) {
+			// TODO: (dff 19/03/2020) This exception should probably bubble up..
+			System.out.println("Fatal error reading Cached<?> target from parcel.");
+			System.out.println(e.getMessage());
+		}
+		this.origin = new Date(src.readLong());
+		this.force = (src.readInt() > 0);
+	}
+
+	public static final Parcelable.Creator<Cached> CREATOR =
+			new Parcelable.Creator<Cached>() {
+				@Override
+				public Cached createFromParcel(Parcel source) {
+					return new Cached(source);
+				}
+
+				@Override
+				public Cached[] newArray(int size) {
+					return new Cached[size];
+				}
+			};
+	// **** END Parcelable ****
 }

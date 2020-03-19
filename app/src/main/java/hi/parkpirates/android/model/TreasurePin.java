@@ -1,5 +1,8 @@
 package hi.parkpirates.android.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /*
 	TreasurePin{..} class contains the minimum of information required
 	 to display upon the world map an indicator to the user that a treasure
@@ -22,7 +25,7 @@ package hi.parkpirates.android.model;
 
 	Objects of this type are immutable.
  */
-public class TreasurePin {
+public class TreasurePin implements Parcelable {
 	public final int			treasureId;
 	public final GpsLocation	location;
 	public final int			status;
@@ -32,4 +35,37 @@ public class TreasurePin {
 		location = loc;
 		status = stat;
 	}
+
+	// **** Parcelable ****
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(treasureId);
+		dest.writeParcelable(location, 0);
+		dest.writeInt(status);
+	}
+
+	private TreasurePin(Parcel src) {
+		this.treasureId = src.readInt();
+		this.location = src.readParcelable(GpsLocation.class.getClassLoader());
+		this.status = src.readInt();
+	}
+
+	public static final Parcelable.Creator<TreasurePin> CREATOR =
+			new Parcelable.Creator<TreasurePin>() {
+				@Override
+				public TreasurePin createFromParcel(Parcel source) {
+					return new TreasurePin(source);
+				}
+
+				@Override
+				public TreasurePin[] newArray(int size) {
+					return new TreasurePin[size];
+				}
+			};
+	// **** END Parcelable ****
 }

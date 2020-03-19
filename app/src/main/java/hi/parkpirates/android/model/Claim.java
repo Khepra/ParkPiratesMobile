@@ -1,11 +1,14 @@
 package hi.parkpirates.android.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /*
 	The Claim{..} class represents a single user's claim upon a particular treasure.
  */
-public class Claim {
+public class Claim implements Parcelable {
 	public final int userId;
 	public final int treasureId;
 	private final Date start;
@@ -36,4 +39,41 @@ public class Claim {
 	}
 
 	// TODO: (dff 18/03/2020) Some sort of expiry or completion check?
+
+	// **** Parcelable ****
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(userId);
+		dest.writeInt(treasureId);
+		dest.writeLong(start.getTime());
+		dest.writeInt(complete ? 1 : 0);
+		dest.writeInt(expired ? 1 : 0);
+	}
+
+	private Claim(Parcel src) {
+		this.userId = src.readInt();
+		this.treasureId = src.readInt();
+		this.start = new Date(src.readLong());
+		this.complete = (src.readInt() > 0);
+		this.expired = (src.readInt() > 0);
+	}
+
+	public static final Parcelable.Creator<Claim> CREATOR =
+			new Parcelable.Creator<Claim>() {
+				@Override
+				public Claim createFromParcel(Parcel source) {
+					return new Claim(source);
+				}
+
+				@Override
+				public Claim[] newArray(int size) {
+					return new Claim[size];
+				}
+			};
+	// **** END Parcelable ****
 }
