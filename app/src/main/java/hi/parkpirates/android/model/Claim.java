@@ -3,12 +3,13 @@ package hi.parkpirates.android.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /*
 	The Claim{..} class represents a single user's claim upon a particular treasure.
  */
-public class Claim implements Parcelable {
+public class Claim implements Parcelable, Serializable {
 	public final int userId;
 	public final int treasureId;
 	private final Date start;

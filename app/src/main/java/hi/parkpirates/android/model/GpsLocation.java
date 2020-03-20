@@ -3,6 +3,8 @@ package hi.parkpirates.android.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /*
 	GpsLocation{..} class represents a single location in earth GPS coordinates.
 	 Objects of this type are immutable, and should be constructed as
@@ -13,7 +15,7 @@ import android.os.Parcelable;
 	 Easily test whether the GpsLocation lies within an area defined in some
 	 fashion.
  */
-public class GpsLocation implements Parcelable {
+public class GpsLocation implements Parcelable, Serializable {
 	public final float		latitude;
 	public final float		longitude;
 
@@ -25,6 +27,11 @@ public class GpsLocation implements Parcelable {
 	public static GpsLocation sample() {
 		// TODO: (dff 18/03/2020) Connect to android location services.
 		return new GpsLocation(0, 0);
+	}
+
+	@Override
+	public String toString() {
+		return "(" + Float.toString(latitude) + ", " + Float.toString(longitude) + ")";
 	}
 
 	// **** Parcelable ****

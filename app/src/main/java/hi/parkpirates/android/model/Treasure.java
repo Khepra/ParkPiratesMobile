@@ -4,13 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 // TODO: (dff 18/03/2020) Short description.
-public class Treasure implements Parcelable {
+public class Treasure implements Parcelable, Serializable {
 	public final int 			index;
 	public final String 		name;
 	public final int 			value;
@@ -23,8 +24,8 @@ public class Treasure implements Parcelable {
 	public final int 			ownerId;
 	public final int 			timesFound;
 
-	private final List<GpsLocation> 	locPath;
-	private final List<Claim> 			claims;
+	private final ArrayList<GpsLocation> 	locPath;
+	private final ArrayList<Claim> 			claims;
 
 	public Treasure(int id, String name, int worth, GpsLocation loc, String code, String auxInfo,
 					boolean multi, Date end, boolean complete, int owner, int found) {

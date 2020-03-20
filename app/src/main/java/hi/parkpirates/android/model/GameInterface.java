@@ -1,5 +1,7 @@
 package hi.parkpirates.android.model;
 
+import android.os.Parcelable;
+
 import java.util.List;
 
 /*
@@ -7,7 +9,7 @@ import java.util.List;
 	 controllers to interact with the game model.  See specific implementation
 	 in MobileGame{..} class.
  */
-public interface GameInterface {
+public interface GameInterface extends Parcelable {
 	Result registerUser(String name, String email, String passPlain);
 	Result logIn(String name, String passPlain);
 

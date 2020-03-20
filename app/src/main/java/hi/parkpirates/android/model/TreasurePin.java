@@ -3,6 +3,10 @@ package hi.parkpirates.android.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Serializable;
+
 /*
 	TreasurePin{..} class contains the minimum of information required
 	 to display upon the world map an indicator to the user that a treasure
@@ -25,7 +29,7 @@ import android.os.Parcelable;
 
 	Objects of this type are immutable.
  */
-public class TreasurePin implements Parcelable {
+public class TreasurePin implements Parcelable, Serializable {
 	public final int			treasureId;
 	public final GpsLocation	location;
 	public final int			status;
@@ -34,6 +38,11 @@ public class TreasurePin implements Parcelable {
 		treasureId = id;
 		location = loc;
 		status = stat;
+	}
+
+	@Override
+	public String toString() {
+		return Integer.toString(treasureId) + location.toString() + Integer.toString(status);
 	}
 
 	// **** Parcelable ****

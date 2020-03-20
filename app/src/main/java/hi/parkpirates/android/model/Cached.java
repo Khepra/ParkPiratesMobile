@@ -3,6 +3,7 @@ package hi.parkpirates.android.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -20,7 +21,7 @@ import java.util.GregorianCalendar;
 	 are made by users of the Cached<?> class.
 	See MobileGame{..} class for caching and refresh policy.
  */
-public class Cached<T extends Parcelable> implements Parcelable {
+public class Cached<T extends Parcelable> implements Parcelable, Serializable {
 	private T 				obj;
 	private Date			origin;
 	private boolean			force;
@@ -62,6 +63,11 @@ public class Cached<T extends Parcelable> implements Parcelable {
 		force = true;
 	}
 
+	@Override
+	public String toString() {
+		return "Cached " + obj.getClass().getName() + " @" + origin.toString() +
+				"\n  " + obj.toString();
+	}
 
 	// **** Parcelable ****
 	@Override
