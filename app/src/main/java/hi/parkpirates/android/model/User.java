@@ -24,7 +24,7 @@ public class User implements Parcelable {
 		this.score = score;
 
 		this.claim = null;
-		this.token = "";
+		this.token = "undef";
 	}
 
 

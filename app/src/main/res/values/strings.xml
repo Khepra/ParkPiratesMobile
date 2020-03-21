@@ -5,4 +5,7 @@
     <string name="file_cache_treasures">TREASURE_CACHE_V2</string>
 
     <string name="intent_key_game_interface">intent.key.gameInterface</string>
+
+    <string name="url_base_local">http://192.168.43.202:8080/rest/</string>
+    <string name="url_base_remote">FIXME</string>
 </resources>

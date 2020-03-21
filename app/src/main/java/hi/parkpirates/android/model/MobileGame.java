@@ -141,6 +141,11 @@ public class MobileGame implements GameInterface {
 		}
 	}
 
+	public void DBG_testRemote() {
+		RemoteSource src = new RemoteSource(context.getString(R.string.url_base_local));
+		src.DBG_testFetch("deadbeef");
+	}
+
 	public void DBG_printCache() {
 		for (Cached<TreasurePin> c : pinCache) {
 			System.out.println(c);

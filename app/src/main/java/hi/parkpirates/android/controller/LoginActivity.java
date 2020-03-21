@@ -72,8 +72,10 @@ public class LoginActivity extends AppCompatActivity {
 			}
 		} else {
 			System.out.println("LOGIN: Unpacked game interface.");
+			((MobileGame)model).setContext(this);
 			// TODO: (dff 20/03/2020) Remove debug.
 			((MobileGame)model).DBG_printCache();
+			((MobileGame)model).DBG_testRemote();
 		}
 
 		// NOTE: Sloppy business below.
