@@ -11,7 +11,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// TODO: (dff 18/03/2020) Short description.
+/*
+	MobileGame{..} class implements the GameInterface -- this class is the
+	 heart of the Model; it maintains game data objects over their lifetimes,
+	 caching them as necessary and pulling fresh versions from the remote
+	 source where appropriate.
+
+	This class defines the interface through which the activities associated with
+	 this project shall interact with the game systems.
+ */
 public class MobileGame implements GameInterface {
 	private ArrayList<Cached<Treasure>> trsCache;
 	private ArrayList<Cached<TreasurePin>> pinCache;
@@ -127,10 +135,15 @@ public class MobileGame implements GameInterface {
 	public void DBG_makePins()
 			throws IOException
 	{
-		// TEST: Are cached<?> maintained properly by parcelling.
 		if (pinCache.isEmpty()) {
 			TreasurePin tp = new TreasurePin(2, GpsLocation.sample(), -1);
 			Cached<TreasurePin> c = new Cached<>(tp);
+			pinCache.add(c);
+			tp = new TreasurePin(3, GpsLocation.sample(), -10);
+			c = new Cached<>(tp);
+			pinCache.add(c);
+			tp = new TreasurePin(4, GpsLocation.sample(), -100);
+			c = new Cached<>(tp);
 			pinCache.add(c);
 
 			File pinCacheFile = new File(context.getCacheDir(),
@@ -257,7 +270,15 @@ public class MobileGame implements GameInterface {
 
 	@Override
 	public List<TreasurePin> getActiveTreasures() {
-		return null;
+		// NOTE: This is a placeholder implementation, added for now
+		//	to test out dynamic generation of view elements.  Will be
+		//	overhauled in the future.
+		// TODO: Check cached data age, refresh as necessary.
+		ArrayList<TreasurePin> out = new ArrayList<>();
+		for (Cached<TreasurePin> c : pinCache) {
+			out.add(c.data());
+		}
+		return out;
 	}
 
 	@Override

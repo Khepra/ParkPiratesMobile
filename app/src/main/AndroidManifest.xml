@@ -19,17 +19,23 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".controller.SeekActivity">
+        <activity android:name=".controller.SeekActivity"
+                android:label="Seek Treasure">
         </activity>
-        <activity android:name=".controller.BuryActivity">
+        <activity android:name=".controller.BuryActivity"
+                android:label="Bury Treasure">
         </activity>
-        <activity android:name=".controller.TreasureInfoActivity">
+        <activity android:name=".controller.TreasureInfoActivity"
+                android:label="Treasure Information">
         </activity>
-        <activity android:name=".controller.UserInfoActivity">
+        <activity android:name=".controller.UserInfoActivity"
+                android:label="User Information">
         </activity>
-        <activity android:name=".controller.MapActivity">
+        <activity android:name=".controller.MapActivity"
+                android:label="Map">
         </activity>
-        <activity android:name=".controller.RegisterActivity">
+        <activity android:name=".controller.RegisterActivity"
+                android:label="Register">
         </activity>
         <activity android:name=".controller.LoginActivity"
             android:label="PpDebug">

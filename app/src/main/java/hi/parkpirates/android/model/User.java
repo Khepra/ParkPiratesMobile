@@ -3,7 +3,9 @@ package hi.parkpirates.android.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-// TODO: (dff 18/03/2020) Short description.
+/*
+	User{..} is a data object describing a single Park Pirates user.
+ */
 public class User implements Parcelable {
 	public final int index;
 	public final String name;

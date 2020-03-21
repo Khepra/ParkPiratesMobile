@@ -30,6 +30,8 @@ import java.io.Serializable;
 	Objects of this type are immutable.
  */
 public class TreasurePin implements Parcelable, Serializable {
+	private static final long serialVersionUID = 1L;
+
 	public final int			treasureId;
 	public final GpsLocation	location;
 	public final int			status;

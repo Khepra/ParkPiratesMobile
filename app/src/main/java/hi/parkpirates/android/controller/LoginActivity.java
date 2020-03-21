@@ -11,10 +11,14 @@ import hi.parkpirates.android.model.MobileGame;
 
 import java.io.IOException;
 
-// NOTE: MainActivity is the login/splash screen activity.
+// NOTE: LoginActivity is the login/splash screen activity.
 public class LoginActivity extends AppCompatActivity {
 	private GameInterface model = null;
 
+	// NOTE: Lifecycle methods overridden here for informational
+	//	purposes only at present -- wanted to have a look at how/when
+	//	the various methods were being used, and what circumstances
+	//	would trigger them.
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -78,11 +82,20 @@ public class LoginActivity extends AppCompatActivity {
 			((MobileGame)model).DBG_testRemote();
 		}
 
-		// NOTE: Sloppy business below.
+		// NOTE: Temporary action assignment, temporary buttons.
 		findViewById(R.id.move_userInfo).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent i = UserInfoActivity.prepare(LoginActivity.this, model);
+				finish();
+				startActivity(i);
+			}
+		});
+
+		findViewById(R.id.move_map).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = MapActivity.prepare(LoginActivity.this, model);
 				finish();
 				startActivity(i);
 			}

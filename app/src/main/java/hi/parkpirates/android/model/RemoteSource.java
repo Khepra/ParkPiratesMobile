@@ -31,6 +31,7 @@ public class RemoteSource implements RemoteData {
 		return "user=" + credential.name + "&auth=" + credential.token;
 	}
 
+	// TODO: (dff 21/03/2020) Remove DBG_ methods.
 	public void DBG_testFetch(String param) {
 		// TODO: (dff 21/03/2020) Investigate the static field leak possibility.
 		@SuppressLint("StaticFieldLeak") final FetchTask task = new FetchTask() {
@@ -82,6 +83,8 @@ public class RemoteSource implements RemoteData {
 				conn.setRequestProperty("charset", "utf-8");
 				conn.setRequestProperty("Content-Length", Integer.toString(parLength));
 				conn.setUseCaches(false);
+				// TODO: (dff 21/03/2020) Find a good timeout value, catch SocketException explicitly
+				conn.setConnectTimeout(3000);
 
 				try (DataOutputStream out = new DataOutputStream(conn.getOutputStream())) {
 					out.write(parBytes);

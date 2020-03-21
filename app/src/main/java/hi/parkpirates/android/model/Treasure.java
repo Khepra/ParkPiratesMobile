@@ -10,8 +10,13 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-// TODO: (dff 18/03/2020) Short description.
+/*
+	Treasure{..} class is a data object describing a single Park-Pirates
+	 treasure.
+ */
 public class Treasure implements Parcelable, Serializable {
+	private static final long serialVersionUID = 1L;
+
 	public final int 			index;
 	public final String 		name;
 	public final int 			value;
@@ -94,6 +99,8 @@ public class Treasure implements Parcelable, Serializable {
 		this.locPath = new ArrayList<>();
 		this.claims = new ArrayList<>();
 
+		// NOTE: May have to overhaul the following lines.  Consider array-based
+		//	un-parcel as seen in MobileGame{..}
 		locPath.addAll(Arrays.asList(
 				(GpsLocation[])src.readParcelableArray(GpsLocation.class.getClassLoader())));
 		claims.addAll(Arrays.asList(

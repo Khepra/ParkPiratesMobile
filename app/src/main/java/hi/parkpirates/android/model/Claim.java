@@ -10,6 +10,8 @@ import java.util.Date;
 	The Claim{..} class represents a single user's claim upon a particular treasure.
  */
 public class Claim implements Parcelable, Serializable {
+	private static final long serialVersionUID = 1L;
+
 	public final int userId;
 	public final int treasureId;
 	private final Date start;

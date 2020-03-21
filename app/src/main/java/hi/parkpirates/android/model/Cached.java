@@ -22,6 +22,8 @@ import java.util.GregorianCalendar;
 	See MobileGame{..} class for caching and refresh policy.
  */
 public class Cached<T extends Parcelable> implements Parcelable, Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private T 				obj;
 	private Date			origin;
 	private boolean			force;
@@ -61,6 +63,11 @@ public class Cached<T extends Parcelable> implements Parcelable, Serializable {
 	// invalidate(..) method sets the force flag for this object.
 	public void invalidate() {
 		force = true;
+	}
+
+	// data(..) method is an accessor to the cached object.
+	public T data() {
+		return obj;
 	}
 
 	@Override
