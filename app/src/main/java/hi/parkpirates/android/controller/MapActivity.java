@@ -9,11 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import hi.parkpirates.android.R;
 import hi.parkpirates.android.model.GameInterface;
+import hi.parkpirates.android.model.Response;
+import hi.parkpirates.android.model.Result;
 import hi.parkpirates.android.model.TreasurePin;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity implements GameInterface.PinCallback {
 	private GameInterface model = null;
 	private ArrayList<Button> pinButtons = new ArrayList<>();
 
@@ -26,14 +29,9 @@ public class MapActivity extends AppCompatActivity {
 		if (model == null) {
 			System.err.println("MAP: Error -- failed to receive game interface.");
 		} else {
+			model.setContext(this);
 			// Testing out dynamic generation of view elements.
-			LinearLayout linkLayout = findViewById(R.id.layout_map_container);
-			for (TreasurePin p : model.getActiveTreasures()) {
-				Button next = new Button(this);
-				String text = "Treasure[" + Integer.toString(p.treasureId) + "]: " + Integer.toString(p.status);
-				next.setText(text);
-				linkLayout.addView(next);
-			}
+			model.getActiveTreasures(this);
 		}
 
 		findViewById(R.id.layout_map_button_login).setOnClickListener(new View.OnClickListener() {
@@ -44,6 +42,23 @@ public class MapActivity extends AppCompatActivity {
 				startActivity(i);
 			}
 		});
+	}
+
+	@Override
+	public void postPins(Response<List<TreasurePin>> outcome) {
+		if (outcome.code == Result.SUCCESS && outcome.body != null) {
+			displayPins(outcome.body);
+		}
+	}
+
+	private void displayPins(List<TreasurePin> pins) {
+		LinearLayout linkLayout = findViewById(R.id.layout_map_container);
+		for (TreasurePin p : pins) {
+			Button next = new Button(this);
+			String text = "Treasure[" + Integer.toString(p.treasureId) + "]: " + Integer.toString(p.status);
+			next.setText(text);
+			linkLayout.addView(next);
+		}
 	}
 
 	// prepare(..) static method provides a mechanism for other activities to

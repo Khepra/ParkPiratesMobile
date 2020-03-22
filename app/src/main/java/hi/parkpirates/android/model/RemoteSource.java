@@ -11,8 +11,23 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
+/*
+	RemoteSource{..} class implements the remote data interface.  This class
+	 is used to access the remote Park-Pirates server and interact with it.
+
+	NOTE: Currently rather skeletal.  Awaiting formalization of REST interface
+	 on server to fully implement.  Recommend using DummySource{..} instead in
+	 the interim.
+
+	Typically the RemoteSource will make contact by targeting a particular
+	 URL, with user name and session token as POST parameters, as well as
+	 any pertinent input.  The response from the server shall take the form
+	 of a JSON structure, which RemoteData will take appropriate action on
+	 (usually this will involve parsing the JSON into game data objects,
+	 and then firing them back up through the given callback).
+ */
+// TODO: (dff 22/03/2020) Make RemoteSource parcelable.
 public class RemoteSource implements RemoteData {
 	private User credential;
 	private String host;
@@ -115,67 +130,72 @@ public class RemoteSource implements RemoteData {
 	}
 
 	@Override
-	public Result createUser(String name, String email, String passPlain) {
-		return Result.FAIL_DEFAULT;
+	public void cancelPending() {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result modScore(int userId, int delta) {
-		return Result.FAIL_DEFAULT;
+	public void logIn(String name, String passPlain, Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result deleteUser() {
-		return Result.FAIL_DEFAULT;
+	public void verify(String name, String token, Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result logIn(String name, String passPlain) {
-		return Result.FAIL_DEFAULT;
+	public void register(String name, String email, String passPlain, Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result logOut() {
-		return Result.FAIL_DEFAULT;
+	public void getPins(Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public User getUser() {
-		return null;
+	public void logOut(Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public List<TreasurePin> getPins() {
-		return null;
+	public void delete(Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Treasure getTreasure(int treasureId) {
-		return null;
+	public void getUserTreasures(Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result makeClaim(Claim c) {
-		return Result.FAIL_DEFAULT;
+	public void removeTreasure(int treasureId, Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result abandonClaim(Claim c) {
-		return Result.FAIL_DEFAULT;
+	public void getSpecificTreasure(int treasureId, Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result completeClaim(Claim c) {
-		return Result.FAIL_DEFAULT;
+	public void claim(int treasureId, Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result createTreasure(Treasure trs) {
-		return null;
+	public void abandon(Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result deleteTreasure(int treasureId) {
-		return null;
+	public void capture(Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void bury(Treasure treasure, Callbacks cb) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 }

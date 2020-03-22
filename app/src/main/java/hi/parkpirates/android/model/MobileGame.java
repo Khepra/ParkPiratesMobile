@@ -8,7 +8,6 @@ import hi.parkpirates.android.R;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -20,12 +19,16 @@ import java.util.List;
 	This class defines the interface through which the activities associated with
 	 this project shall interact with the game systems.
  */
-public class MobileGame implements GameInterface {
+public class MobileGame implements GameInterface, RemoteData.Callbacks {
 	private ArrayList<Cached<Treasure>> trsCache;
 	private ArrayList<Cached<TreasurePin>> pinCache;
 	private Cached<User> usrCache;
 	private RemoteData server;
 	private Context context;
+
+	// We need to track some of the callback objects passed into the methods
+	//	of this class.
+	private PinCallback pendingPinCallback = null;
 
 	// NOTE: This constructor is temporary, should not be used.
 	// TODO: (dff 19/03/2020) Remove.
@@ -83,10 +86,14 @@ public class MobileGame implements GameInterface {
 		}
 
 		// TODO: (dff 19/03/2020) Check shared prefs for existing credentials.
+
+		// TODO: (dff 22/03/2020) Replace DummySource with RemoteSource.
+		this.server = new DummySource();
 	}
 
 	// setContext(..) method provides a means to set the context associated
 	//	with this MobileGame for instances which were created from a Parcel.
+	@Override
 	public void setContext(Context con) {
 		this.context = con;
 	}
@@ -130,6 +137,98 @@ public class MobileGame implements GameInterface {
 		trsCache = (ArrayList)src.readObject();
 		src.close();
 	}
+
+	// **** GameInterface ****
+
+	@Override
+	public void logIn(String name, String passPlain, LogInCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void verify(String name, String token, VerifyCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void register(String name, String email, String passPlain, RegisterCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void getActiveTreasures(PinCallback cb) {
+		// TODO: (dff 22/03/2020) Replace proof-of-concept implementation.
+		ArrayList<TreasurePin> out = new ArrayList<>();
+
+		// Check whether our cached pin data is all fresh.  Note that if one
+		//	or more pins are stale, then we will refresh the entire list.
+		boolean fresh = true;
+		for (Cached<TreasurePin> c : pinCache) {
+			// TODO: (dff 22/03/2020) Replace '5' with static constant.
+			if (c.expired(5)) {
+				fresh = false;
+				break;
+			} else {
+				out.add(c.data());
+			}
+		}
+
+		if (fresh) {
+			// Cached pins are all valid, send them back!
+			cb.postPins(new Response<List<TreasurePin>>(Result.SUCCESS, out));
+		} else {
+			// Otherwise get a fresh set from the remote host.
+			pendingPinCallback = cb;
+			server.getPins(this);
+		}
+	}
+
+	@Override
+	public void logOut(LogOutCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void delete(DeleteCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void getUserTreasures(UserTreasureCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void remove(int treasureId, RemoveCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void getSpecificTreasure(int treasureId, TreasureCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void claim(int treasureId, ClaimCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void abandon(AbandonCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void submit(String code, SubmitCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void bury(Treasure treasure, BuryCallback cb) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	// **** END GameInterface ****
 
 	// TODO: (dff 20/03/2020) Remove DBG_ methods eventually.
 	public void DBG_makePins()
@@ -191,6 +290,7 @@ public class MobileGame implements GameInterface {
 		if (!pinCache.isEmpty()) {
 			dest.writeInt(1);
 			dest.writeParcelableArray(pinCache.toArray(new Cached[0]), 0);
+			// NOTE: pin segment works as expected.
 		} else {
 			dest.writeInt(0);
 		}
@@ -201,7 +301,7 @@ public class MobileGame implements GameInterface {
 			dest.writeInt(0);
 		}
 
-		// TODO: (dff 19/03/2020) Does RemoteData need to be parcelled?
+		// TODO: (dff 22/03/2020) Does RemoteData need to be parcelled?
 	}
 
 	private MobileGame(Parcel src) {
@@ -231,6 +331,10 @@ public class MobileGame implements GameInterface {
 		}
 		
 		// TODO: (dff 19/03/2020) Unify user & treasure claim reference.
+
+		// TODO: (dff 22/03/2020) Replace DummySource with RemoteSource, un-parcel
+		//  RemoteSource instead of creating fresh.
+		this.server = new DummySource();
 	}
 
 	public static final Parcelable.Creator<MobileGame> CREATOR =
@@ -248,66 +352,99 @@ public class MobileGame implements GameInterface {
 
 	// **** END Parcelable ****
 
+	// **** RemoteData.Callbacks interface ****
+
 	@Override
-	public Result registerUser(String name, String email, String passPlain) {
-		return Result.FAIL_DEFAULT;
+	public void updateLogIn(Response<User> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result logIn(String name, String passPlain) {
-		return Result.FAIL_DEFAULT;
+	public void updateVerify(Response<User> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result logOut() {
-		return Result.FAIL_DEFAULT;
+	public void updateRegister(Response<Void> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result deleteUser() {
-		return Result.FAIL_DEFAULT;
-	}
+	public void updatePins(Response<List<TreasurePin>> outcome) {
+		if (outcome.code == Result.SUCCESS && outcome.body != null) {
+			// Generate a new set of Cached<?> wrappings.
+			pinCache.clear();
+			for (TreasurePin p : outcome.body) {
+				pinCache.add(new Cached<TreasurePin>(p));
+			}
 
-	@Override
-	public List<TreasurePin> getActiveTreasures() {
-		// NOTE: This is a placeholder implementation, added for now
-		//	to test out dynamic generation of view elements.  Will be
-		//	overhauled in the future.
-		// TODO: Check cached data age, refresh as necessary.
-		ArrayList<TreasurePin> out = new ArrayList<>();
-		for (Cached<TreasurePin> c : pinCache) {
-			out.add(c.data());
+			// Update the local cache file.
+			File pinCacheFile = new File(context.getCacheDir(),
+					context.getString(R.string.file_cache_pins));
+			try {
+				FileOutputStream out = new FileOutputStream(pinCacheFile);
+				savePinCache(out);
+				out.close();
+			} catch (IOException e) {
+				System.err.println("Error: Failed to save pin cache in MobileGame::updatePins(..).");
+				System.err.println(e.getMessage());
+			}
+
+			// If a pending callback exists, trigger it and reset.
+			if (pendingPinCallback != null) {
+				pendingPinCallback.postPins(outcome);
+				pendingPinCallback = null;
+			}
+		} else {
+			// TODO: (dff 22/03/2020) Determine policy on what to do when requests time out.
+			System.err.println("Failure in MobileGame::updatePins(..).");
 		}
-		return out;
 	}
 
 	@Override
-	public List<Treasure> getUserTreasures() {
-		return null;
+	public void updateLogOut(Response<Void> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Treasure getSpecificTreasure(int index) {
-		return null;
+	public void updateDelete(Response<Void> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result buryTreasure(Treasure newTrs) {
-		return Result.FAIL_DEFAULT;
+	public void updateUserTreasures(Response<List<Treasure>> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result claimTreasure(int index) {
-		return Result.FAIL_DEFAULT;
+	public void updateRemove(Response<Void> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result submitCode(String code) {
-		return Result.FAIL_DEFAULT;
+	public void updateSpecificTreasure(Response<Treasure> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
 
 	@Override
-	public Result abandonClaim() {
-		return Result.FAIL_DEFAULT;
+	public void updateClaim(Response<RemoteData.Update> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
 	}
+
+	@Override
+	public void updateAbandon(Response<RemoteData.Update> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void updateCapture(Response<RemoteData.Update> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	@Override
+	public void updateBury(Response<Treasure> outcome) {
+		// TODO: (dff 22/03/2020) Implement.
+	}
+
+	// **** END RemoteData.Callbacks interface ****
 }
