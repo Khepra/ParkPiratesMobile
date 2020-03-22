@@ -16,6 +16,8 @@ import java.io.Serializable;
 	 fashion.
  */
 public class GpsLocation implements Parcelable, Serializable {
+	private static final long serialVersionUID = 1L;
+
 	public final float		latitude;
 	public final float		longitude;
 

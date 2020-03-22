@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">ParkPiratesMobile</string>
     <string name="file_preferences_key">SHARED_PREF_FILE</string>
-    <string name="file_cache_pins">PIN_CACHE_V3</string>
-    <string name="file_cache_treasures">TREASURE_CACHE_V3</string>
+    <string name="file_cache_pins">PIN_CACHE_V4</string>
+    <string name="file_cache_treasures">TREASURE_CACHE_V4</string>
 
     <string name="intent_key_game_interface">intent.key.gameInterface</string>
 
