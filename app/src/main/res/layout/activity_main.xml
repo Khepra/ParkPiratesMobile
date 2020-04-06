@@ -8,18 +8,22 @@
         tools:context=".MainActivity"
         android:background="@drawable/dimonds_portrait">
     <Button
-            android:layout_width="@android:dimen/notification_large_icon_width"
-            android:layout_height="@android:dimen/notification_large_icon_height"
             android:id="@+id/button"
-            android:background="@drawable/play"
-            android:onClick="startGame"
-            style="@android:style/Widget.Material.Light.Button"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+            android:onClick="logIn"
+            android:text="Login"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:borderRadius="6dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="352dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="171dp"
-            android:layout_marginEnd="171dp"/>
-
+            android:layout_marginRight="161dp"
+            android:layout_marginEnd="161dp"
+            android:layout_marginBottom="353dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="24sp"
+            android:typeface="sans"
+            android:textStyle="bold"
+            android:textAllCaps="false"/>
 </RelativeLayout>
