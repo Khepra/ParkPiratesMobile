@@ -23,6 +23,52 @@
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent">
+            
+        <Username
+                android:text="Type your username"
+                android:layout_width="389dp"
+                android:layout_height="50dp"
+                android:ems="20"
+                android:id="@+id/username_input"
+                android:layout_marginTop="300dp"
+                android:layout_marginLeft="12dp"
+                />
+    
+        <Email
+                android:text="Enter your email address"
+                android:layout_width="389dp"
+                android:layout_height="50dp"
+                android:ems="20"
+                android:id="@+id/email_input"
+                android:hint="youremailaddress@emailcompany.com/is/no/dk"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="12dp"/>
+    
+        <Password
+                android:layout_width="389dp"
+                android:layout_height="50dp"
+                android:ems="20"
+                android:id="@+id/password_input"
+                android:hint="Must be at least 8 characters and contain at least one number and one capital-letter"
+                android:baselineAligned="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="12dp"/>
+    
+        <Button
+                android:text="Submit"
+                android:onClick="startGame"
+                android:id="@+id/submit_button"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:borderRadius="6dp"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="30dp"    
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="24sp"
+                android:typeface="sans"
+                android:textStyle="bold"
+                android:textAllCaps="false"/>
 
         <Button
                 android:id="@+id/move_userInfo"
