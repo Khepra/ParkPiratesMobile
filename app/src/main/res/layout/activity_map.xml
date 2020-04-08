@@ -30,7 +30,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/layout_map_button_userInfo"
-                    android:text="User Info"/>
+                    android:text="User Info"
+                    android:onClick="userInfoActivity"
+                    android:background="@color/colorPrimary"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="24sp"
+                    android:typeface="sans"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"/>
 
         </LinearLayout>
     </LinearLayout>
