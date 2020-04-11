@@ -41,7 +41,7 @@
                         android:translationX="100dp"
                         android:translationY="270dp"
                         app:strokeColor="@color/colorPrimaryDark"
-                        app:strokeWidth="2dp"
+                        app:strokeWidth="2dp"/>
                         
             </FrameLayout>
 
