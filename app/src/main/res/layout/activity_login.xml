@@ -19,7 +19,7 @@
 
     <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:orientation="horizontal"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +35,7 @@
             android:layout_height="50dp"
             android:ems="20"
             android:id="@+id/username_input"
-            tools:layout_editor_absoluteY="315dp"
+            tools:layout_editor_absoluteY="300dp"
             android:layout_marginRight="12dp"/>
     
     <Email
@@ -46,7 +46,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/email_input"
             android:hint="youremailaddress@emailcompany.com/is/no/dk"
-            tools:layout_editor_absoluteY="375dp"
+            tools:layout_editor_absoluteY="360dp"
             android:layout_marginRight="12dp"/>
     
     <Password
@@ -57,7 +57,7 @@
             android:id="@+id/password_input"
             android:hint="Must be at least 8 characters and contain at least one number and one capital-letter"
             android:baselineAligned="false"
-            tools:layout_editor_absoluteY="438dp"
+            tools:layout_editor_absoluteY="420dp"
             android:layout_marginRight="12dp"/>
     
     <Button
@@ -65,17 +65,16 @@
             app:layout_constraintRight_toRightOf="parent"
             android:onClick="startGame"
             android:id="@+id/submit_button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="389dp"
+            android:layout_height="70dp"
             android:background="@color/colorPrimary"
-            android:borderRadius="6dp"
             android:fontFamily="sans-serif-condensed"
-            android:textSize="24sp"
+            android:textSize="30sp"
             android:typeface="sans"
             android:textStyle="bold"
             android:textAllCaps="false"
-            tools:layout_editor_absoluteY="522dp"
-            android:layout_marginRight="164dp"/>
+            tools:layout_editor_absoluteY="500dp"
+            android:layout_marginRight="12dp"/>
     
     <Button
             android:id="@+id/move_map"
@@ -90,7 +89,7 @@
             android:typeface="sans"
             android:textStyle="bold"
             android:textAllCaps="false"
-            tools:layout_editor_absoluteY="522dp"
+            tools:layout_editor_absoluteY="650dp"
             android:layout_marginRight="44dp"/>
     
     <Button
@@ -106,7 +105,7 @@
             android:typeface="sans"
             android:textStyle="bold"
             android:textAllCaps="false"
-            tools:layout_editor_absoluteY="522dp"
+            tools:layout_editor_absoluteY="650dp"
             android:layout_marginRight="304dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
