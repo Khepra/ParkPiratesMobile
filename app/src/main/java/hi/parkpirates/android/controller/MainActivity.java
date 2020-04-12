@@ -1,4 +1,4 @@
-package hi.parkpirates.android;
+package hi.parkpirates.android.controller;
 
 import android.content.Intent;
 import android.util.Log;
@@ -15,10 +15,10 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 	}
 
-	public void startGame(View v) {
+	/*public void startGame(View v) {
 		Log.i("ImageButton", "clicked");
 		Intent intent = new Intent(this, StartGame.class);
 		startActivity(intent);
 		finish();
-	}
+	}*/
 }

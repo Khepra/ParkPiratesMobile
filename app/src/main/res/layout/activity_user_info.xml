@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,21 +8,75 @@
         android:layout_height="match_parent"
         tools:context=".controller.UserInfoActivity"
         android:background="@drawable/dimonds_portrait">
-
+    
     <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
             android:orientation="horizontal"
             android:gravity="center"
+            android:background="@color/colorPrimary"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent">
-
-        <Button
-                android:id="@+id/move_login"
-                android:text="Login"
+        
+        
+        <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content"
+                android:textSize="50dp"
+                android:text="ParkPirates"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif-condensed"/>
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+            android:layout_width="380dp"
+            android:layout_height="470dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/rolled_map6">
+    </FrameLayout>
+    <Button
+            android:id="@+id/log_in"
+            android:onClick="loginActivity"
+            android:text="Logout"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:background="@color/colorPrimary"
+            android:translationX="280dp"
+            android:translationY="650dp"
+            app:strokeColor="@color/colorPrimaryDark"
+            app:strokeWidth="2dp"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+    
+    <Button
+            android:id="@+id/move_treasure"
+            android:text="Treasure"
+            android:onClick="treasureInfoActivity"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:translationX="145dp"
+            android:translationY="650dp"/>
+    
+    <Button
+            android:id="@+id/move_map"
+            android:text="Map"
+            android:onClick="mapActivity"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:buttonCornerRadius="2dp"
+            android:translationX="10dp"
+            android:translationY="650dp"/>
+</RelativeLayout>
