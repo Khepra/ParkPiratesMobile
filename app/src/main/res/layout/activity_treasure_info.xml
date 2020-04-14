@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".controller.TreasureInfoActivity"
+        tools:context=".controller.BuryActivity"
         android:background="@drawable/dimonds_portrait">
     
     <LinearLayout
@@ -35,44 +35,41 @@
             android:background="@drawable/rolled_map6">
     </FrameLayout>
     <Button
-            android:id="@+id/log_out"
-            android:onClick="loginActivity"
-            android:text="Logout"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:background="#AFB281"
-            android:translationX="280dp"
+            android:id="@+id/log_in"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/logout"
+            android:translationX="328dp"
+            android:translationY="650dp"/>
+    
+    <Button
+            android:id="@+id/move_bury"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bury_activity"
+            android:translationX="247dp"
             android:translationY="650dp"/>
     
     <Button
             android:id="@+id/move_map"
-            android:text="Map"
-            android:onClick="mapActivity"
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:background="#AFB281"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:translationX="145dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/map"
+            android:translationX="165dp"
+            android:translationY="650dp"/>
+    <Button
+            android:id="@+id/move_treasure"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/treasure_info"
+            android:translationX="83dp"
             android:translationY="650dp"/>
     
     <Button
-            android:id="@+id/move_userInfo"
-            android:text="User"
-            android:onClick="userInfoActivity"
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:background="#AFB281"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:translationX="10dp"
+            android:id="@+id/move_userInfoActivity"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/user_info"
+            android:translationX="2dp"
             android:translationY="650dp"/>
 </RelativeLayout>

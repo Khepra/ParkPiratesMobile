@@ -33,7 +33,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 			// Testing out dynamic generation of view elements.
 			model.getActiveTreasures(this);
 		}
-
+/*
 		findViewById(R.id.layout_map_button_login).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -41,7 +41,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 				finish();
 				startActivity(i);
 			}
-		});
+		});*/
 	}
 
 	@Override
@@ -52,13 +52,13 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 	}
 
 	private void displayPins(List<TreasurePin> pins) {
-		LinearLayout linkLayout = findViewById(R.id.layout_map_container);
+	/*	LinearLayout linkLayout = findViewById(R.id.layout_map_container);
 		for (TreasurePin p : pins) {
 			Button next = new Button(this);
 			String text = "Treasure[" + Integer.toString(p.treasureId) + "]: " + Integer.toString(p.status);
 			next.setText(text);
 			linkLayout.addView(next);
-		}
+		}*/
 	}
 
 	// prepare(..) static method provides a mechanism for other activities to

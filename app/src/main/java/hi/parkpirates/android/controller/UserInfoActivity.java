@@ -27,14 +27,14 @@ public class UserInfoActivity extends AppCompatActivity {
 		}
 
 		// NOTE: Sloppy business below.
-		findViewById(R.id.move_login).setOnClickListener(new View.OnClickListener() {
+		/*findViewById(R.id.move_login).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent i = LoginActivity.prepare(UserInfoActivity.this, model);
 				startActivity(i);
 				finish();
 			}
-		});
+		});*/
 	}
 
 	// prepare(..) static method provides a mechanism for other activities to
