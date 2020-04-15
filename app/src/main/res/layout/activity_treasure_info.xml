@@ -38,7 +38,7 @@
                 android:layout_width="380dp"
                 android:layout_height="470dp"
                 android:translationX="15dp"
-                android:translationY="20dp"
+                android:translationY="15dp"
                 android:background="@drawable/rolled_map6">
         </FrameLayout>
         
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/layout_treasure_nav"
-                android:translationY="40dp">
+                android:translationY="25dp">
             
             <Button
                     android:id="@+id/layout_treasure_button_userInfo"

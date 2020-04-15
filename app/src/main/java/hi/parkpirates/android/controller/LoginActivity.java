@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 		login.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = MapActivity.prepare(LoginActivity.this, model);
+				Intent i = UserInfoActivity.prepare(LoginActivity.this, model);
 				finish();
 				startActivity(i);
 			}

@@ -121,7 +121,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 		bury.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = MapActivity.prepare(MapActivity.this, model);
+				Intent i = BuryActivity.prepare(MapActivity.this, model);
 				finish();
 				startActivity(i);
 			}
