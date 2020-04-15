@@ -3,6 +3,7 @@ package hi.parkpirates.android.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import hi.parkpirates.android.R;
@@ -13,7 +14,11 @@ import java.io.IOException;
 
 // NOTE: LoginActivity is the login/splash screen activity.
 public class LoginActivity extends AppCompatActivity {
+
 	private GameInterface model = null;
+	private EditText username = (EditText)findViewById(R.id.typeName);
+	private EditText email = (EditText)findViewById(R.id.typeEmail);
+	private EditText password = (EditText)findViewById(R.id.typePassword);
 
 	// NOTE: Lifecycle methods overridden here for informational
 	//	purposes only at present -- wanted to have a look at how/when
@@ -92,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 			}
 		});
 
+		/*
 		findViewById(R.id.move_map).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -99,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 				finish();
 				startActivity(i);
 			}
-		});
+		});*/
 	}
 
 	// prepare(..) static method provides a mechanism for other activities to
