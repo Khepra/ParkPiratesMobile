@@ -3,6 +3,7 @@ package hi.parkpirates.android.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +17,10 @@ import java.io.IOException;
 public class LoginActivity extends AppCompatActivity {
 
 	private GameInterface model = null;
-	private EditText username = (EditText)findViewById(R.id.typeName);
-	private EditText email = (EditText)findViewById(R.id.typeEmail);
-	private EditText password = (EditText)findViewById(R.id.typePassword);
+	private EditText username;
+	private EditText email;
+	private EditText password;
+	private Button login;
 
 	// NOTE: Lifecycle methods overridden here for informational
 	//	purposes only at present -- wanted to have a look at how/when
@@ -59,6 +61,11 @@ public class LoginActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
+		username = (EditText)findViewById(R.id.typeName);
+		email = (EditText)findViewById(R.id.typeEmail);
+		password = (EditText)findViewById(R.id.typePassword);
+		login = (Button)findViewById(R.id.move_userInfo);
+
 		// TODO: (dff 19/03/2020) Strip debug logging.
 		System.out.println("LOGIN: OnCreate(..)");
 
@@ -87,8 +94,8 @@ public class LoginActivity extends AppCompatActivity {
 			((MobileGame)model).DBG_testRemote();
 		}
 
-		// NOTE: Temporary action assignment, temporary buttons.
-		findViewById(R.id.move_userInfo).setOnClickListener(new View.OnClickListener() {
+
+		login.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent i = UserInfoActivity.prepare(LoginActivity.this, model);
