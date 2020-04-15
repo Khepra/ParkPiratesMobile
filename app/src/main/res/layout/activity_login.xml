@@ -9,37 +9,43 @@
         android:background="@drawable/dimonds_portrait">
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/layout_login_container">
+    
+    <android.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:background="#AFB281"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
-    
-    
+            android:id="@+id/top_menu">
+        
         <TextView
+                android:translationX="98dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="40dp"
+                android:textSize="36dp"
                 android:text="ParkPirates"
                 android:textStyle="bold"
+                android:textColor="@android:color/black"
                 app:fontFamily="sans-serif-condensed"/>
-    </LinearLayout>
+    </android.widget.Toolbar>
+    
     
     <FrameLayout
             android:layout_width="380dp"
             android:layout_height="470dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
+            android:translationX="15dp"
+            android:translationY="20dp"
             android:background="@drawable/rolled_map6">
-    
-    
+        
         <EditText
                 android:layout_width="300dp"
                 android:layout_height="70dp"
                 android:inputType="textPersonName"
                 android:text="Name"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:id="@+id/typeName"
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="40dp"/>
@@ -49,7 +55,7 @@
                 android:layout_height="70dp"
                 android:inputType="textEmailAddress"
                 android:text="Email"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:id="@+id/typeEmail"
                 android:layout_marginTop="120dp"
                 android:layout_marginLeft="40dp"/>
@@ -58,7 +64,7 @@
                 android:layout_width="300dp"
                 android:layout_height="70dp"
                 android:inputType="textPassword"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:text="Password"
                 android:id="@+id/typePassword"
                 android:layout_marginTop="190dp"
@@ -67,14 +73,15 @@
                 android:text="Submit"
                 app:layout_constraintRight_toRightOf="parent"
                 android:id="@+id/move_userInfo"
-                android:layout_width="120dp"
-                android:layout_height="70dp"
+                android:layout_width="110dp"
+                android:layout_height="60dp"
                 android:background="#AFB281"
                 android:fontFamily="sans-serif-condensed"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
                 android:layout_marginLeft="130dp"
                 android:layout_marginTop="320dp"/>
-    </FrameLayout>
+        </FrameLayout>
+    </LinearLayout>
 </RelativeLayout>

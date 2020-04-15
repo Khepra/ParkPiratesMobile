@@ -98,21 +98,21 @@ public class LoginActivity extends AppCompatActivity {
 		login.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = UserInfoActivity.prepare(LoginActivity.this, model);
+				Intent i = MapActivity.prepare(LoginActivity.this, model);
 				finish();
 				startActivity(i);
 			}
 		});
 
 
-		findViewById(R.id.move_map).setOnClickListener(new View.OnClickListener() {
+		/*findViewById(R.id.move_map).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent i = MapActivity.prepare(LoginActivity.this, model);
 				finish();
 				startActivity(i);
 			}
-		});
+		});*/
 	}
 
 	// prepare(..) static method provides a mechanism for other activities to

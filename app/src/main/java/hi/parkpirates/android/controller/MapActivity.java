@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import hi.parkpirates.android.R;
@@ -24,7 +25,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 	private Button map;
 	private Button bury;
 	private Button logout;
-
+	private Toolbar myToolbar;
 
 	// NOTE: Lifecycle methods overridden here for informational
 	//	purposes only at present -- wanted to have a look at how/when
