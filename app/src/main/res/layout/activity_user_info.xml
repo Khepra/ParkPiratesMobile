@@ -37,45 +37,38 @@
     
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/layout_map_container">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/layout_user_nav"
+            android:translationY="650dp">
         
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/layout_map_nav"
-                android:translationY="650dp">
-            
-            <Button
-                    android:id="@+id/layout_map_button_userInfo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/user_info"/>
-            
-            <Button
-                    android:id="@+id/layout_map_button_treasureInfo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/treasure_info"/>
-            
-            <Button
-                    android:id="@+id/layout_map_button_map"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/map"/>
-            <Button
-                    android:id="@+id/layout_map_button_bury"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bury_activity"/>
-            
-            <Button
-                    android:id="@+id/layout_map_button_login"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/logout"/>
-        </LinearLayout>
+        <Button
+                android:id="@+id/layout_user_button_userInfo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/user_info"/>
+        
+        <Button
+                android:id="@+id/layout_user_button_treasureInfo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/treasure_info"/>
+        
+        <Button
+                android:id="@+id/layout_user_button_map"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/map"/>
+        <Button
+                android:id="@+id/layout_user_button_bury"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bury_activity"/>
+        
+        <Button
+                android:id="@+id/layout_user_button_login"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/logout"/>
     </LinearLayout>
 </RelativeLayout>

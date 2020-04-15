@@ -3,13 +3,18 @@ package hi.parkpirates.android.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import hi.parkpirates.android.R;
 import hi.parkpirates.android.model.GameInterface;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserInfoActivity extends AppCompatActivity {
 	private GameInterface model = null;
+	private ArrayList<Button> treasures = new ArrayList<>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +31,48 @@ public class UserInfoActivity extends AppCompatActivity {
 			System.out.println("USER_INFO: Unpacked game interface.");
 		}
 
+
 		// NOTE: Sloppy business below.
-		findViewById(R.id.layout_map_button_login).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.layout_user_button_login).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent i = LoginActivity.prepare(UserInfoActivity.this, model);
+				startActivity(i);
+				finish();
+			}
+		});
+
+		findViewById(R.id.layout_user_button_bury).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = BuryActivity.prepare(UserInfoActivity.this, model);
+				startActivity(i);
+				finish();
+			}
+		});
+
+		findViewById(R.id.layout_user_button_map).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = MapActivity.prepare(UserInfoActivity.this, model);
+				startActivity(i);
+				finish();
+			}
+		});
+
+		findViewById(R.id.layout_user_button_treasureInfo).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = TreasureInfoActivity.prepare(UserInfoActivity.this, model);
+				startActivity(i);
+				finish();
+			}
+		});
+
+		findViewById(R.id.layout_user_button_userInfo).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = UserInfoActivity.prepare(UserInfoActivity.this, model);
 				startActivity(i);
 				finish();
 			}

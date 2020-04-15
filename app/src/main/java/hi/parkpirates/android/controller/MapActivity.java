@@ -46,7 +46,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 		findViewById(R.id.layout_map_button_userInfo).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = LoginActivity.prepare(MapActivity.this, model);
+				Intent i = UserInfoActivity.prepare(MapActivity.this, model);
 				finish();
 				startActivity(i);
 			}
@@ -56,7 +56,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 		findViewById(R.id.layout_map_button_treasureInfo).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = LoginActivity.prepare(MapActivity.this, model);
+				Intent i = TreasureInfoActivity.prepare(MapActivity.this, model);
 				finish();
 				startActivity(i);
 			}
@@ -74,7 +74,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 		findViewById(R.id.layout_map_button_bury).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = LoginActivity.prepare(MapActivity.this, model);
+				Intent i = MapActivity.prepare(MapActivity.this, model);
 				finish();
 				startActivity(i);
 			}

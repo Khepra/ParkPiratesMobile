@@ -34,42 +34,41 @@
             android:layout_centerInParent="true"
             android:background="@drawable/rolled_map6">
     </FrameLayout>
-    <Button
-            android:id="@+id/log_in"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/logout"
-            android:translationX="328dp"
-            android:translationY="650dp"/>
-    
-    <Button
-            android:id="@+id/move_bury"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/bury_activity"
-            android:translationX="247dp"
-            android:translationY="650dp"/>
-    
-    <Button
-            android:id="@+id/move_map"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/map"
-            android:translationX="165dp"
-            android:translationY="650dp"/>
-    <Button
-            android:id="@+id/move_treasure"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/treasure_info"
-            android:translationX="83dp"
-            android:translationY="650dp"/>
-    
-    <Button
-            android:id="@+id/move_userInfoActivity"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/user_info"
-            android:translationX="2dp"
-            android:translationY="650dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/layout_bury_nav"
+            android:translationY="650dp">
+        
+        <Button
+                android:id="@+id/layout_bury_button_userInfo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/user_info"/>
+        
+        <Button
+                android:id="@+id/layout_bury_button_treasureInfo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/treasure_info"/>
+        
+        <Button
+                android:id="@+id/layout_bury_button_map"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/map"/>
+        <Button
+                android:id="@+id/layout_bury_button_bury"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bury_activity"/>
+        
+        <Button
+                android:id="@+id/layout_bury_button_login"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/logout"/>
+    </LinearLayout>
 </RelativeLayout>

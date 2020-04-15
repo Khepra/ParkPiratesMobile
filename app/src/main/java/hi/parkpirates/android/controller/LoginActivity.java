@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 			}
 		});
 
-		/*
+
 		findViewById(R.id.move_map).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 				finish();
 				startActivity(i);
 			}
-		});*/
+		});
 	}
 
 	// prepare(..) static method provides a mechanism for other activities to
