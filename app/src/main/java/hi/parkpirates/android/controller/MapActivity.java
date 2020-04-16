@@ -2,12 +2,14 @@ package hi.parkpirates.android.controller;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
+import com.mapbox.android.core.permissions.PermissionsManager;
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
 import hi.parkpirates.android.R;
 import hi.parkpirates.android.model.GameInterface;
 import hi.parkpirates.android.model.Response;
@@ -17,15 +19,16 @@ import hi.parkpirates.android.model.TreasurePin;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MapActivity extends AppCompatActivity implements GameInterface.PinCallback {
 	private GameInterface model = null;
 	private ArrayList<Button> pinButtons = new ArrayList<>();
-	private Button user;
-	private Button treasure;
-	private Button map;
-	private Button bury;
-	private Button logout;
-	private Toolbar myToolbar;
+	private Button user, treasure, map, bury, logout;
+	private MapView viewMap;
+
+	private MapboxMap mapBox;
+	private PermissionsManager permissionsManager;
+
 
 	// NOTE: Lifecycle methods overridden here for informational
 	//	purposes only at present -- wanted to have a look at how/when
@@ -34,30 +37,35 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 	@Override
 	protected void onStart() {
 		super.onStart();
+		viewMap.onStart();
 		System.out.println("MAP: OnStart(..)");
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
+		viewMap.onStop();
 		System.out.println("MAP: OnStop(..)");
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		viewMap.onDestroy();
 		System.out.println("MAP: OnDestroy(..)");
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
+		viewMap.onPause();
 		System.out.println("MAP: OnPause(..)");
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
+		viewMap.onResume();
 		System.out.println("MAP: OnResume(..)");
 	}
 
@@ -71,6 +79,11 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 		map = (Button)findViewById(R.id.layout_map_button_map);
 		bury = (Button)findViewById(R.id.layout_map_button_bury);
 		logout = (Button)findViewById(R.id.layout_map_button_login);
+
+		/*
+		viewMap = (MapView)findViewById(R.id.mapView);
+        viewMap.onCreate(savedInstanceState);
+		*/
 
 		model = getIntent().getParcelableExtra(getString(R.string.intent_key_game_interface));
 		if (model == null) {
@@ -98,7 +111,6 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 				startActivity(i);
 			}
 		});
-
 
 		treasure.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -144,6 +156,21 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 			linkLayout.addView(next);
 		}
 	}
+
+	/*
+	public void onMapReady(MapboxMap mapboxMap) {
+		enableLocation();
+		LatLng location = new LatLng(64.135947, -21.918222);
+	}
+
+	private void enableLocation() {
+		if (PermissionsManager.areLocationPermissionsGranted(this)) {
+			//...
+		} else {
+			permissionsManager = new PermissionsManager((PermissionsListener) this);
+			permissionsManager.requestLocationPermissions(this);
+		}
+	}*/
 
 	// prepare(..) static method provides a mechanism for other activities to
 	//	create an intent which can start up this activity.  This involves parcelling

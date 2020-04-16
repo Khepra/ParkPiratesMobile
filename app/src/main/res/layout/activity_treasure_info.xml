@@ -40,6 +40,105 @@
                 android:translationX="15dp"
                 android:translationY="15dp"
                 android:background="@drawable/rolled_map6">
+    
+            <ListView
+                    android:layout_width="100dp"
+                    android:layout_height="365dp"
+                    android:translationX="10dp"
+                    android:translationY="50dp"/>
+    
+            <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/blue_dimond"
+                    android:id="@+id/imageView_blue_dimond"
+                    android:translationX="121dp"
+                    android:translationY="55dp"/>
+            <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/green_dimond"
+                    android:id="@+id/imageView_green_dimond"
+                    android:translationX="121dp"
+                    android:translationY="122dp"/>
+            <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/red_dimond"
+                    android:id="@+id/imageView_red_dimond"
+                    android:translationX="121dp"
+                    android:translationY="190dp"/>
+            <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/purple_dimond"
+                    android:id="@+id/imageView_purple_dimond"
+                    android:translationX="121dp"
+                    android:translationY="255dp"/>
+            <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    app:srcCompat="@drawable/gold"
+                    android:id="@+id/imageView_gold"
+                    android:translationX="111dp"
+                    android:translationY="315dp"/>
+            <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    app:srcCompat="@drawable/gold_blue_dimond"
+                    android:id="@+id/imageView_gold_blue_dimond"
+                    android:translationX="111dp"
+                    android:translationY="371dp"/>
+    
+    
+            <ListView
+                    android:layout_width="100dp"
+                    android:layout_height="365dp"
+                    android:translationX="186dp"
+                    android:translationY="50dp"/>
+    
+            <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="55dp"
+                    app:srcCompat="@drawable/gold_green_dimond"
+                    android:id="@+id/imageView_gold_green_dimond"
+                    android:translationX="290dp"
+                    android:translationY="55dp"/>
+            <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="55dp"
+                    app:srcCompat="@drawable/gold_red_dimond"
+                    android:id="@+id/imageView_gold_red_dimond"
+                    android:translationX="290dp"
+                    android:translationY="122dp"/>
+            <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="55dp"
+                    app:srcCompat="@drawable/gold_purple_dimond"
+                    android:id="@+id/imageView_gold_purple_dimond"
+                    android:translationX="291dp"
+                    android:translationY="190dp"/>
+            <ImageView
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/three_dimonds"
+                    android:id="@+id/imageView_three_dimonds"
+                    android:translationX="300dp"
+                    android:translationY="251dp"/>
+            <ImageView
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/four_dimonds"
+                    android:id="@+id/imageView_four_dimonds"
+                    android:translationX="300dp"
+                    android:translationY="320dp"/>
+            <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="55dp"
+                    app:srcCompat="@drawable/gold_four_dimonds"
+                    android:id="@+id/imageView_gold_four_dimonds"
+                    android:translationX="300dp"
+                    android:translationY="375dp"/>
         </FrameLayout>
         
         
