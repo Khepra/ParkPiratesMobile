@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 /*
 	RemoteSource{..} class implements the remote data interface.  This class
@@ -124,10 +125,10 @@ public class RemoteSource implements RemoteData {
 					conn.disconnect();
 				}
 			}
-
 			return result;
 		}
 	}
+
 
 	@Override
 	public void cancelPending() {
@@ -136,17 +137,45 @@ public class RemoteSource implements RemoteData {
 
 	@Override
 	public void logIn(String name, String passPlain, Callbacks cb) {
-		// TODO: (dff 22/03/2020) Implement.
+		// gsa: Was trying to figure out how to implement the function.
+		// It is just a raw implement and not tested.
+		boolean user_name = name.equals(credential.index);
+		boolean user_password = passPlain.equals(credential.index);
+
+		if(name.isEmpty() || passPlain.isEmpty()) {
+			cb.updateLogIn(new Response(Result.FAIL_INVALID_INPUT));
+		}else if (!user_name && !user_password) {
+			cb.updateLogIn(new Response(Result.FAIL_INVALID_INPUT));
+		} else {
+			cb.updateLogIn(new Response(Result.SUCCESS));
+		}
 	}
 
 	@Override
 	public void verify(String name, String token, Callbacks cb) {
-		// TODO: (dff 22/03/2020) Implement.
+		// gsa: Was trying to figure out how to implement the function.
+		// It is just a raw implement and not tested.
+		boolean user_name = name.equals(credential.index);
+		boolean user_token = token.equals(credential.index);
+
+		if (name.isEmpty() || token.isEmpty() || !user_name) {
+			cb.updateVerify(new Response(Result.FAIL_INVALID_INPUT));
+		} else if(!user_token) {
+			cb.updateVerify(new Response(Result.FAIL_INVALID_CRED));
+		} else {
+			cb.updateVerify(new Response(Result.SUCCESS));
+		}
 	}
 
 	@Override
 	public void register(String name, String email, String passPlain, Callbacks cb) {
-		// TODO: (dff 22/03/2020) Implement.
+		// gsa: Was trying to figure out how to implement the function.
+		// It is just a raw implement and not tested.
+		if (name.isEmpty() || email.isEmpty() || passPlain.isEmpty()) {
+			cb.updateVerify(new Response(Result.FAIL_INVALID_INPUT));
+		} else {
+			cb.updateVerify(new Response(Result.SUCCESS));
+		}
 	}
 
 	@Override

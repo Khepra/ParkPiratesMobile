@@ -143,6 +143,14 @@ public class MobileGame implements GameInterface, RemoteData.Callbacks {
 	@Override
 	public void logIn(String name, String passPlain, LogInCallback cb) {
 		// TODO: (dff 22/03/2020) Implement.
+		// gsa: Was trying to figure out how to implement the function.
+		// It is just a raw implement and not tested.
+		if(name.isEmpty() || passPlain.isEmpty()) {
+			cb.postLogIn(new Response(Result.FAIL_INVALID_INPUT));
+		} else {
+			cb.postLogIn(new Response(Result.SUCCESS));
+
+		}
 	}
 
 	@Override
@@ -362,11 +370,28 @@ public class MobileGame implements GameInterface, RemoteData.Callbacks {
 	@Override
 	public void updateVerify(Response<User> outcome) {
 		// TODO: (dff 22/03/2020) Implement.
+		// (gsa) tried to implement this function by using implement from (dff) in updatePins,
+		// it is not guaranteed that it works, has not been tested.
+		if (outcome.code == Result.SUCCESS && outcome.body != null) {
+			// Update the local cache file.
+			File usrCacheFile = new File(context.getCacheDir(),
+					context.getString(R.string.file_cache_users));
+			try {
+				FileOutputStream out = new FileOutputStream(usrCacheFile);
+				savePinCache(out);
+				out.close();
+			} catch (IOException e) {
+				System.err.println("Error: Failed to save user cache in MobileGame::updateLogin(..).");
+				System.err.println(e.getMessage());
+			}
+		}
+
 	}
 
 	@Override
 	public void updateRegister(Response<Void> outcome) {
 		// TODO: (dff 22/03/2020) Implement.
+
 	}
 
 	@Override
@@ -414,6 +439,27 @@ public class MobileGame implements GameInterface, RemoteData.Callbacks {
 	@Override
 	public void updateUserTreasures(Response<List<Treasure>> outcome) {
 		// TODO: (dff 22/03/2020) Implement.
+		// (gsa) tried to implement this function by using implement from (dff) in updatePins,
+		// it is not guaranteed that it works, has not been tested.
+		if (outcome.code == Result.SUCCESS && outcome.body != null) {
+			// Generate a new set of Cached<?> wrappings.
+			trsCache.clear();
+			for (Treasure t : outcome.body) {
+				trsCache.add(new Cached<Treasure>(t));
+			}
+
+			// Update the local cache file.
+			File trsCacheFile = new File(context.getCacheDir(),
+					context.getString(R.string.file_cache_treasures));
+			try {
+				FileOutputStream out = new FileOutputStream(trsCacheFile);
+				savePinCache(out);
+				out.close();
+			} catch (IOException e) {
+				System.err.println("Error: Failed to save pin cache in MobileGame::updateUserTreasure(..).");
+				System.err.println(e.getMessage());
+			}
+		}
 	}
 
 	@Override

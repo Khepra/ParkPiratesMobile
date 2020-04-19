@@ -3,9 +3,11 @@
     <string name="file_preferences_key">SHARED_PREF_FILE</string>
     <string name="file_cache_pins">PIN_CACHE_V4</string>
     <string name="file_cache_treasures">TREASURE_CACHE_V4</string>
-
+    <string name="file_cache_users">USER_CACHE_V4</string>
+    <string name="mapbox_access_token">MAPBOX_ACCESS_TOKEN</string>
+    <string name="user_location_permission_explanation">USER_LOCATION_PERMISSION_EXPLANATION</string>
     <string name="intent_key_game_interface">intent.key.gameInterface</string>
-
+    <string name="user_location_permission_not_granted">USER_LOCATION_PERMISSION_NOT_GRANTED</string>
     <string name="url_base_local">http://192.168.43.202:8080/rest/</string>
     <string name="url_base_remote">FIXME</string>
 </resources>

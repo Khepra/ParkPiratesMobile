@@ -25,7 +25,7 @@
                 android:translationX="98dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="36dp"
+                android:textSize="36sp"
                 android:text="ParkPirates"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"

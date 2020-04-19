@@ -11,11 +11,7 @@ import hi.parkpirates.android.model.GameInterface;
 
 public class BuryActivity extends AppCompatActivity {
 	private GameInterface model = null;
-	private Button user;
-	private Button treasure;
-	private Button map;
-	private Button bury;
-	private Button logout;
+	private Button user, treasure, map, bury, logout;
 
 	// NOTE: Lifecycle methods overridden here for informational
 	//	purposes only at present -- wanted to have a look at how/when
@@ -98,6 +94,7 @@ public class BuryActivity extends AppCompatActivity {
 				finish();
 			}
 		});
+
 
 		user.setOnClickListener(new View.OnClickListener() {
 			@Override

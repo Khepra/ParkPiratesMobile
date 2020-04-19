@@ -27,7 +27,7 @@
                     android:translationX="98dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="36dp"
+                    android:textSize="36sp"
                     android:text="ParkPirates"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
@@ -55,35 +55,35 @@
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:background="@drawable/user_info"
-                    android:layout_marginLeft="11dp"/>
+                    android:layout_marginStart="11dp"/>
             
             <Button
                     android:id="@+id/layout_user_button_treasureInfo"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/treasure_info"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginStart="10dp"/>
             
             <Button
                     android:id="@+id/layout_user_button_map"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/map"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginStart="10dp"/>
             
             <Button
                     android:id="@+id/layout_user_button_bury"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/bury_activity"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginStart="10dp"/>
             
             <Button
                     android:id="@+id/layout_user_button_login"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:background="@drawable/logout"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginStart="10dp"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

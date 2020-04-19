@@ -11,7 +11,7 @@
     
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="65dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:background="#AFB281"
@@ -22,54 +22,87 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="40dp"
+                android:textSize="36sp"
                 android:text="ParkPirates"
                 android:textStyle="bold"
-                app:fontFamily="sans-serif-condensed"/>
+                app:fontFamily="sans-serif-condensed"
+                android:textColor="@android:color/black"/>
     </LinearLayout>
-    <FrameLayout
-            android:layout_width="380dp"
-            android:layout_height="470dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:background="@drawable/rolled_map6">
-    </FrameLayout>
-    <Button
-            android:id="@+id/log_in"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/logout"
-            android:translationX="328dp"
-            android:translationY="650dp"/>
-    
-    <Button
-            android:id="@+id/move_bury"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/bury_activity"
-            android:translationX="247dp"
-            android:translationY="650dp"/>
-    
-    <Button
-            android:id="@+id/move_map"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/map"
-            android:translationX="165dp"
-            android:translationY="650dp"/>
-    <Button
-            android:id="@+id/move_treasure"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/treasure_info"
-            android:translationX="83dp"
-            android:translationY="650dp"/>
-    
-    <Button
-            android:id="@+id/move_userInfoActivity"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/user_info"
-            android:translationX="2dp"
-            android:translationY="650dp"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/layout_register_container">
+        
+        <android.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="#AFB281"
+                android:id="@+id/top_menu">
+            
+            <TextView
+                    android:translationX="98dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="36dp"
+                    android:text="ParkPirates"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    app:fontFamily="sans-serif-condensed"/>
+        </android.widget.Toolbar>
+        
+        <FrameLayout
+                android:layout_width="380dp"
+                android:layout_height="470dp"
+                android:translationX="15dp"
+                android:translationY="15dp"
+                android:background="@drawable/rolled_map6">
+        </FrameLayout>
+        
+        
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/layout_register_nav"
+                android:translationY="25dp">
+            
+            <Button
+                    android:id="@+id/layout_register_button_userInfo"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/user_info"
+                    android:layout_marginStart="11dp"/>
+            
+            <Button
+                    android:id="@+id/layout_register_button_treasureInfo"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/treasure_info"
+                    android:layout_marginStart="10dp"/>
+            
+            <Button
+                    android:id="@+id/layout_register_button_map"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/map"
+                    android:layout_marginStart="10dp"/>
+            
+            <Button
+                    android:id="@+id/layout_register_button_bury"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/bury_activity"
+                    android:layout_marginStart="10dp"/>
+            
+            <Button
+                    android:id="@+id/layout_register_button_login"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/logout"
+                    android:layout_marginStart="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
