@@ -19,17 +19,30 @@ Developers:
  For mapview you might need to install in file->settings->Android SDK and choose SDK Platforms and choose API number 14 Android 4.0(iceCreamSandwich)
  
  If the emulator does not work then you might need as well go again to file->settings->Android SDK and choose SDK Tools and choose for install: 
+ 
  Android SDK Buil-Tools 30-rc2
+ 
  GPU Debugging tools
+ 
  LLDB
+ 
  CMake
+ 
  Android Auto API Simulators
+ 
  Android Auto Desktop Head Unit emulator
+ 
  Android Emulator
+ 
  Android SDK Plarform-Tools
+ 
  Android SDK Tools
+ 
  Documanrtation for Android SDK
+ 
  Google Play APK Expansion library
+ 
  Google Play licensing library
+ 
  Google Play services
  
