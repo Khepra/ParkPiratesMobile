@@ -59,6 +59,7 @@ public class BuryActivity extends AppCompatActivity {
 		logout = (Button)findViewById(R.id.layout_bury_button_login);
 
 
+		// onckilcklistener for logout, it leads to login page
 		logout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -68,6 +69,7 @@ public class BuryActivity extends AppCompatActivity {
 			}
 		});
 
+		// onckilcklistener for bury
 		bury.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -77,6 +79,7 @@ public class BuryActivity extends AppCompatActivity {
 			}
 		});
 
+		// onckilcklistener for map
 		map.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -86,6 +89,7 @@ public class BuryActivity extends AppCompatActivity {
 			}
 		});
 
+		// onckilcklistener for treasure info
 		treasure.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -96,6 +100,7 @@ public class BuryActivity extends AppCompatActivity {
 		});
 
 
+		// onckilcklistener for user info
 		user.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

@@ -76,6 +76,7 @@ public class UserInfoActivity extends AppCompatActivity {
 			System.out.println("USER_INFO: Unpacked game interface.");
 		}
 
+
 		logout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -85,6 +86,7 @@ public class UserInfoActivity extends AppCompatActivity {
 			}
 		});
 
+		// onckilcklistener for bury
 		bury.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -94,6 +96,7 @@ public class UserInfoActivity extends AppCompatActivity {
 			}
 		});
 
+		// onckilcklistener for map
 		map.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -103,6 +106,7 @@ public class UserInfoActivity extends AppCompatActivity {
 			}
 		});
 
+		// onckilcklistener for treasure info
 		treasure.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -112,6 +116,7 @@ public class UserInfoActivity extends AppCompatActivity {
 			}
 		});
 
+		// onckilcklistener for user info
 		user.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

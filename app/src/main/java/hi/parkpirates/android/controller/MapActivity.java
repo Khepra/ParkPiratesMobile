@@ -110,6 +110,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//mostly is the code for the maview provided by mapbox.com
 		Mapbox.getInstance(this, "pk.eyJ1Ijoic3RqYXJuYSIsImEiOiJjazkxa3hkemwwMHhpM2xwNnhibzVqZXl2In0.EXS7da6cFAXgkkYcQkxwBw");
 		setContentView(R.layout.activity_map);
 		mapView = findViewById(R.id.mapView);
@@ -121,19 +122,21 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 					@Override
 					public void onStyleLoaded(@NonNull Style style) {
 
-// Map is set up and the style has loaded. Now you can add data or make other map adjustments.
-
+					// Map is set up and the style has loaded. Now you can add data or make other map adjustments.
 
 					}
 				});
 			}
 		});
+
+		// the buttons
 		user = (Button)findViewById(R.id.layout_map_button_userInfo);
 		treasure = (Button)findViewById(R.id.layout_map_button_treasureInfo);
 		map = (Button)findViewById(R.id.layout_map_button_map);
 		bury = (Button)findViewById(R.id.layout_map_button_bury);
 		logout = (Button)findViewById(R.id.layout_map_button_login);
 
+		//
 		model = getIntent().getParcelableExtra(getString(R.string.intent_key_game_interface));
 		if (model == null) {
 			System.err.println("MAP: Error -- failed to receive game interface.");
@@ -143,7 +146,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 			model.getActiveTreasures(this);
 		}
 
-
+		// Callback for onMapReady function
 		mapView.getMapAsync(new OnMapReadyCallback() {
 			FrameLayout frameLayout = findViewById(R.id.layout_map_frame);
 			@Override
@@ -153,6 +156,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 		});
 
 
+		// onckilcklistener for logout, it leads to login page
 		logout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -162,6 +166,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 			}
 		});
 
+		// onckilcklistener for user info
 		user.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -171,6 +176,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 			}
 		});
 
+		// onckilcklistener for treasure info
 		treasure.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -180,15 +186,17 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 			}
 		});
 
+		// onckilcklistener for map
 		map.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent i = LoginActivity.prepare(MapActivity.this, model);
+				Intent i = MapActivity.prepare(MapActivity.this, model);
 				finish();
 				startActivity(i);
 			}
 		});
 
+		// onckilcklistener for bury
 		bury.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -200,6 +208,7 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 	}
 
 	@Override
+	// for mapview, provided by mapbox.com
 	public void onMapReady(@NonNull final MapboxMap mapboxMap) {
 		MapActivity.this.mapboxMap = mapboxMap;
 
@@ -212,25 +221,26 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 				});
 	}
 
+	// provided by mapbox.com
 	@SuppressWarnings( {"MissingPermission"})
 	private void enableLocationComponent(@NonNull Style loadedMapStyle) {
-// Check if permissions are enabled and if not request
+		// Check if permissions are enabled and if not request
 		if (PermissionsManager.areLocationPermissionsGranted(this)) {
 
-// Get an instance of the component
+			// Get an instance of the component
 			LocationComponent locationComponent = mapboxMap.getLocationComponent();
 
-// Activate with options
+			// Activate with options
 			locationComponent.activateLocationComponent(
 					LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
 
-// Enable to make component visible
+			// Enable to make component visible
 			locationComponent.setLocationComponentEnabled(true);
 
-// Set the component's camera mode
+			// Set the component's camera mode
 			locationComponent.setCameraMode(CameraMode.TRACKING);
 
-// Set the component's render mode
+			// Set the component's render mode
 			locationComponent.setRenderMode(RenderMode.COMPASS);
 		} else {
 			permissionsManager = new PermissionsManager(this);
@@ -238,16 +248,19 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 		}
 	}
 
+	// provided by mapbox.com
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
 	}
 
+	// provided by mapbox.com
 	@Override
 	public void onExplanationNeeded(List<String> permissionsToExplain) {
 		Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_LONG).show();
 	}
 
+	// provided by mapbox.com
 	@Override
 	public void onPermissionResult(boolean granted) {
 		if (granted) {
@@ -263,6 +276,8 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 		}
 	}
 
+
+	// get pins
 	@Override
 	public void postPins(Response<List<TreasurePin>> outcome) {
 		if (outcome.code == Result.SUCCESS && outcome.body != null) {
@@ -274,12 +289,11 @@ public class MapActivity extends AppCompatActivity implements GameInterface.PinC
 		LinearLayout linkLayout = findViewById(R.id.layout_map_container);
 		for (TreasurePin p : pins) {
 			Button next = new Button(this);
-			String text = "Treasure[" + Integer.toString(p.treasureId) + "]: " + Integer.toString(p.status);
-			next.setText(text);
-			linkLayout.addView(next);
+			//String text = "Treasure[" + Integer.toString(p.treasureId) + "]: " + Integer.toString(p.status);
+			//next.setText(text);
+			//linkLayout.addView(next);
 		}
 	}
-
 
 	// prepare(..) static method provides a mechanism for other activities to
 	//	create an intent which can start up this activity.  This involves parcelling
